@@ -6,10 +6,11 @@ import random
 
 # 声音分析参数
 THRESHOLD = 1000  # 阈值，需要自己调试
-FISHING_KEY = ','  # 钓鱼键
-CATCH_KEY = '.'    # 收杆键
-LEFT_WALK_KEY = 'a'
-RIGHT_WALK_KEY = 'd'
+FISHING_KEY = ','  # 钓鱼键，按照游戏设置
+CATCH_KEY = '.'    # 收杆键，按照游戏设置
+LEFT_WALK_KEY = 'a' #向左平移按键，按照游戏设置
+RIGHT_WALK_KEY = 'd' #向右平移按键，按照游戏设置
+WALK_AMPLITUDE = 1 #左右平移幅度，需要自己调试
 FISHING_TIME_IN_HOUR_MIN = 2  # 钓鱼时间，小时
 FISHING_TIME_IN_HOUR_MAX = 3.5  # 钓鱼时间，小时
 
@@ -67,28 +68,28 @@ def move_around():
     key1 = random.choice([LEFT_WALK_KEY, RIGHT_WALK_KEY])
     pyautogui.keyDown(key1)
 
-    wait = random.uniform(0, 0.1)
-    wait2 = random.uniform(0, 0.1)+wait
+    wait = random.uniform(0, 0.1)*WALK_AMPLITUDE
+    wait2 = random.uniform(0, 0.1)*WALK_AMPLITUDE+wait
     time.sleep(random.uniform(wait, wait2))
 
-    wait = random.uniform(0, 0.1)
+    wait = random.uniform(0, 0.1)*WALK_AMPLITUDE
     key2 = random.choice([LEFT_WALK_KEY, RIGHT_WALK_KEY])
     pyautogui.keyDown(key2)
     time.sleep(wait)
     pyautogui.keyUp(key1)
 
-    wait = random.uniform(0, 0.01)
-    wait2 = random.uniform(0, 0.1)+wait
+    wait = random.uniform(0, 0.01)*WALK_AMPLITUDE
+    wait2 = random.uniform(0, 0.1)*WALK_AMPLITUDE+wait
     time.sleep(random.uniform(wait, wait2))
 
-    wait = random.uniform(0, 0.1)
+    wait = random.uniform(0, 0.1)*WALK_AMPLITUDE
     key3 = random.choice([LEFT_WALK_KEY, RIGHT_WALK_KEY])
     pyautogui.keyDown(key3)
     time.sleep(wait)
     pyautogui.keyUp(key2)
 
-    wait = random.uniform(0, 0.1)
-    wait2 = random.uniform(0, 0.1)+wait
+    wait = random.uniform(0, 0.1)*WALK_AMPLITUDE
+    wait2 = random.uniform(0, 0.1)*WALK_AMPLITUDE+wait
     time.sleep(random.uniform(wait, wait2))
     pyautogui.keyUp(key3)
 
